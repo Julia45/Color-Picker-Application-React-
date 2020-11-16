@@ -1,23 +1,32 @@
-import logo from './logo.svg';
-import './App.css';
+import {ColorPicker} from "./components/ColorPicker"
 
-function App() {
+function App() {  
+  const handleChange = (value) => {
+    console.log('value change', value)
+  }
+  const handleSubmit = (value) => {
+    console.log('value submitted', value)
+  }
+  const handleCancelled = (value) => {
+    console.log('value cancelled', value)
+  }
+  const onSlidersBlockToggle = (value) => {
+    console.log('block closed/opened', value)
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <ColorPicker
+        value={{
+          r: "171",
+          g: "133",
+          b: "199",
+        }}
+        onChange={handleChange}
+        onSubmit={handleSubmit}
+        onCancel={handleCancelled}
+        onSlidersBlockToggle={onSlidersBlockToggle}
+      />
     </div>
   );
 }
